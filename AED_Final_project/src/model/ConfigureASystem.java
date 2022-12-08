@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Model;
+
+import Model.enterprises.Enterprise;
 import business.common.NeedHelp;
-import business.enterprisepkg.Enterprise;
-import business.networkpkg.Network;
+import business.network.Network;
 import business.organizationpkg.Organization;
 import business.personpkg.Person;
 import business.rolepkg.AdminRole;
@@ -16,7 +17,7 @@ import business.rolepkg.HeartHelpManagerRole;
 import business.rolepkg.MayorRole;
 import business.rolepkg.SupervisorRole;
 import business.rolepkg.SystemAdminRole;
-import business.userAccountpkg.UserAccount;
+import business.UserAccountpkg.UserAccount;
 
 
 /**

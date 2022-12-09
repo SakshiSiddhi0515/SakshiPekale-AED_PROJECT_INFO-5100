@@ -58,14 +58,14 @@ public class People_Directory {
 
       public People addPerson()
     {
-        People person = new People();
-       personList.add(person);
-        return person;
+        People people = new People();
+       personList.add(people);
+        return people;
     }
     
-    public void removePerson(People person)
+    public void removePerson(People people)
     {
-        personList.remove(person);
+        personList.remove(people);
     }
 
     public ArrayList<People> getPersonList() {

@@ -6,7 +6,7 @@ package Model.Org;
 
 import java.util.ArrayList;
 import Model.Role.Role_Admin;
-import Model.Role.HelpSeekerRole;
+import Model.Role.Role_helpseeker;
 import Model.Role.Role;
 
 /**
@@ -23,7 +23,7 @@ public class OrgSeeker extends Organization{
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new HelpSeekerRole());
+        roles.add(new Role_helpseeker());
         return roles;
     }
 }

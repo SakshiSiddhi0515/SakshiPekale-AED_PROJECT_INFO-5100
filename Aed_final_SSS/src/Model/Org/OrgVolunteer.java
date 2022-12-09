@@ -6,7 +6,7 @@ package Model.Org;
 
 import java.util.ArrayList;
 import Model.Role.Role;
-import Model.Role.VolunteerRole;
+import Model.Role.Role_volunteer;
 
 /**
  *
@@ -21,7 +21,7 @@ public class OrgVolunteer extends Organization{
       @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new VolunteerRole());
+        roles.add(new Role_volunteer());
         return roles;
     }
 }

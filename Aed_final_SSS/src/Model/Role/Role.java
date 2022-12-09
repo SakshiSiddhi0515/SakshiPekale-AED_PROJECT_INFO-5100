@@ -5,17 +5,17 @@
 package Model.Role;
 
 import javax.swing.JPanel;
-import Model.EcoSystem;
-import Model.enterprisepkg.Enterprise;
+import Model.System.EcoSystem;
+import Model.enterprise.enterprises;
 import Model.Org.Organization;
-import Model.userAccountpkg.UserAccount;
+import Model.User.UserAccount;
 
 
 /**
  *
  * @author sakshipekale
  */
-public class Role {
+public abstract class Role {
     public enum RoleType{
         Admin("Admin"),
         Volunteer("Volunteer"),
@@ -46,7 +46,7 @@ public class Role {
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account, 
             Organization organization, 
-            Enterprise enterprise, 
+            enterprises enterprise, 
             EcoSystem ecoSystem);
 
     @Override

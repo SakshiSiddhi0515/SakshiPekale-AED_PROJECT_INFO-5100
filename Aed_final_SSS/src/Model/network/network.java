@@ -5,7 +5,7 @@
 package Model.network;
 
 import java.util.ArrayList;
-import Model.enterprisepkg.EnterpriseDirectory;
+import Model.enterprise.EnterDirectory;
 
 /**
  *
@@ -20,14 +20,14 @@ public class network {
     
     private String name;
 
-    private EnterpriseDirectory enterpriseDirectory;
+    private EnterDirectory enterpriseDirectory;
     
 
     public network() {
-        enterpriseDirectory = new EnterpriseDirectory();
+        enterpriseDirectory = new EnterDirectory();
     }
 
-    public EnterpriseDirectory getEnterpriseDirectory() {
+    public EnterDirectory getEnterpriseDirectory() {
         return enterpriseDirectory;
     }
 

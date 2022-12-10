@@ -27,7 +27,7 @@ public class ConfigureSystem {
     public static EcoSystem configure()
     {
         EcoSystem system = EcoSystem.getInstance();
-        People people = system.getPersonDirectory().addPeople();
+        People people = system.getPersonDirectory().addPerson();
         people.setFirstName("Sys");
         people.setLastName("Admin");
         people.setName();
@@ -42,7 +42,7 @@ public class ConfigureSystem {
         needHelp.setHelp("Grocery Shopping");
        
         
-        network network = system.addnetwork();
+        network network = system.addNetwork();
       
         network.setCountry("United States");
         network.setState("Massachusetts");

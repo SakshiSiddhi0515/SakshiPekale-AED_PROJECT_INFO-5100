@@ -8,7 +8,7 @@ import Model.enterprise.enterprises;
 import Model.Org.Organization;
 import Model.User.UserAccount;
 import javax.swing.JPanel;
-import userInterface.helpSeeker.HelpSeekerWorkAreaJPanel;
+import UI.helpSeeker.HelpSeekerWorkArea;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Role_helpseeker extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, 
             Organization organization, enterprises enterprise, EcoSystem business) {
-        return new HelpSeekerWorkAreaJPanel(userProcessContainer, enterprise, account, business);
+        return new HelpSeekerWorkArea(userProcessContainer, enterprise, account, business);
     }
     @Override
     public String toString() {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author sakshipekale
  */
-public class People_volunteer {
+public class People_volunteer extends People{
     private String volunteerId;
     private static int count = 001;
     private String latitiude;

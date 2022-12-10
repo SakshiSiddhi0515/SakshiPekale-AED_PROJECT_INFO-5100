@@ -8,7 +8,7 @@ import Model.enterprise.enterprises;
 import Model.Org.Organization;
 import Model.User.UserAccount;
 import javax.swing.JPanel;
-import userInterface.donorpkg.DonorWorkAreaJPanel;
+import UI.donor.DonorWorkAreaJPanel;
 
 /**
  *

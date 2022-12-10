@@ -11,7 +11,7 @@ import Model.Org.OrgDirectory;
  *
  * @author sakshipekale
  */
-public class enterprises {
+public abstract class enterprises extends Organization{
     
     private String enterpriseId;
     private static int count = 1;

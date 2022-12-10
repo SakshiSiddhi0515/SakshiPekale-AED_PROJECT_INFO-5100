@@ -18,7 +18,7 @@ public class EnterpriseNonprofit extends enterprises {
         super(name, EnterpriseType.NonProfit);
     }
 
-    @Override
+    
     public ArrayList<Role> getSupportedRole() {
         return null;
     }

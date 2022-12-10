@@ -3,20 +3,129 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.adminRole;
+import business.common.ValidatePasswords;
+import business.common.ValidateStrings;
+import business.enterprisepkg.Enterprise;
+import business.networkpkg.Network;
+import business.organizationpkg.Organization;
+import business.personpkg.Person;
+import business.rolepkg.Role;
+import business.userAccountpkg.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author DELL
  */
 public class ManageUserAccountJPanel extends javax.swing.JPanel {
-
+    private JPanel container;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
     /**
      * Creates new form ManageUserAccountJPanel
      */
-    public ManageUserAccountJPanel() {
+    public ManageUserAccountJPanel(JPanel container, Enterprise enterprise, UserAccount userAccount) {
         initComponents();
+        this.enterprise = enterprise;
+        this.container = container;
+        this.userAccount = userAccount;
+        addInputVerifiers();
+        populateOrganizationComboBox();
+        popOrganizationUserAccountTable();
+    }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+    
+     private void addInputVerifiers() {
+        InputVerifier stringValidation = new ValidateStrings();
+        userNameJTextField.setInputVerifier(stringValidation);
+         InputVerifier passwordValidation = new ValidatePasswords();
+        passwordJTextField.setInputVerifier(passwordValidation);
+        
+        
+    }
+    
+    public void popOrganizationComboBox() {
+        organizationJComboBox.removeAllItems();
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            organizationJComboBox.addItem(organization);
+        }
+    }
+     public void populateOrganizationComboBox(){
+        organizationJComboBox.removeAllItems();
+        
+        for(Organization organization :  enterprise.getOrganizationDirectory().getOrganizationList()){
+            if(!(organization.getName().equals("Volunteer Organization")) && 
+                    !(organization.getName().equals("Admin")) &&
+                    !(organization.getName().equals("HelpSeeker Organization")))
+            {
+            organizationJComboBox.addItem(organization);
+            }
+        }
+    }
+     
+    public void populateEmployeeComboBox(Organization organization){
+        employeeJComboBox.removeAllItems();
+        
+       if(!(organization.getName().equals("Volunteer Organization")) && 
+                    !(organization.getName().equals("Admin")) &&
+                    !(organization.getName().equals("HelpSeeker Organization")))
+          {
+          for (Person employee : organization.getPersonDirectory().getPersonList()){
+            employeeJComboBox.addItem(employee);   
+          }
+        }
+     }
+    
+    private void populateRoleComboBox(Organization organization){
+        roleJComboBox.removeAllItems();
+        for (Role role : organization.getSupportedRole()){
+            roleJComboBox.addItem(role);
+        }
     }
 
+    public void popOrganizationUserAccountTable() {
+
+        DefaultTableModel model = (DefaultTableModel) userJTable.getModel();
+
+        model.setRowCount(0);
+
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                Object row[] = new Object[2];
+                row[0] = ua;
+                row[1] = ua.getRole();
+                
+                model.addRow(row);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -3,20 +3,124 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.adminRole;
+import business.common.ValidateStrings;
+import business.organizationpkg.Organization;
+import business.organizationpkg.OrganizationDirectory;
+import business.personpkg.HelpSeeker;
+import business.personpkg.Person;
+import business.personpkg.Volunteer;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author DELL
  */
 public class ManageEmployeeJPanel extends javax.swing.JPanel {
-
+    private OrganizationDirectory organizationDir;
+    private JPanel userProcessContainer;
+    
     /**
      * Creates new form ManageEmployeeJPanel
      */
-    public ManageEmployeeJPanel() {
+    public ManageEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organizationDir = organizationDir;
+        addInputVerifiers();
+        populateOrganizationComboBox();
+        populateOrganizationEmpComboBox();
     }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+    public void populateOrganizationComboBox(){
+        organizationJComboBox.removeAllItems();
+        
+        for (Organization organization : organizationDir.getOrganizationList()){
+            organizationJComboBox.addItem(organization);
+        }
+    }
+    
+    public void populateOrganizationEmpComboBox(){
+        organizationEmpJComboBox.removeAllItems();
+        
+        for(Organization organization : organizationDir.getOrganizationList()){
 
+            if(!(organization.getName().equals("Volunteer Organization")) && 
+                    !(organization.getName().equals("Admin")) &&
+                    !(organization.getName().equals("HelpSeeker Organization")))
+            {
+            organizationEmpJComboBox.addItem(organization);
+            }
+        }
+    }
+    
+     private void addInputVerifiers() {
+        InputVerifier stringValidation = new ValidateStrings();
+        firstNameJTextField.setInputVerifier(stringValidation);
+        lastNameJTextField.setInputVerifier(stringValidation);
+        
+    }
+    
+    private void populateEmployeeAndPeopleTable(Organization organization){
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        
+        model.setRowCount(0);
+
+       if (organization.getName().equals("HelpSeeker Organization"))
+        {
+           for(HelpSeeker person : organization.getPersonDirectory().getCustomerLsit()){
+            Object[] row = new Object[2];
+            row[0] = person.getHelpSeekerId();
+            row[1] = person.getName();
+            model.addRow(row);
+        }
+        }
+        else if (organization.getName().equals("Volunteer Organization"))
+        {
+            for(Volunteer person : organization.getPersonDirectory().getVolunteerList()){
+            Object[] row = new Object[2];
+            row[0] = person.getVolunteerId();
+            row[1] = person.getName();
+            model.addRow(row);
+        }
+           
+        }
+        else 
+            {
+            for(Person person : organization.getPersonDirectory().getPersonList()){
+            Object[] row = new Object[2];
+            row[0] = person.getPersonId();
+            row[1] = person.getName();
+            model.addRow(row);
+             }
+            }
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

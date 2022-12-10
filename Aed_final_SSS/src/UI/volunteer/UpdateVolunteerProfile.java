@@ -3,20 +3,107 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.volunteer;
-
+import business.common.ValidateDateOfBirth;
+import business.common.ValidateEmailTextField;
+import business.common.ValidateNumbers;
+import business.common.ValidatePhoneNumber;
+import business.common.ValidateStrings;
+import business.common.Validation;
+import business.personpkg.Person;
+import business.userAccountpkg.UserAccount;
+import business.userAccountpkg.UserAccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 /**
  *
  * @author DELL
  */
 public class UpdateVolunteerProfile extends javax.swing.JPanel {
-
+    private JPanel userProcessContainer;
+    private UserAccount userAccount; 
+    private Person person;
+    private UserAccountDirectory userAccountDirectory;
     /**
      * Creates new form UpdateVolunteerProfile
      */
-    public UpdateVolunteerProfile() {
+    public UpdateVolunteerProfile(JPanel userProcessContainer, UserAccount userAccount, UserAccountDirectory userAccountDirectory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        person = userAccount.getPerson();
+        this.userAccountDirectory = userAccountDirectory;
+        DateFormat form = new SimpleDateFormat("MM/dd/yyyy");
+                
+        firstNameField.setText(person.getFirstName());
+        lastNameField.setText(person.getLastName());
+        dobField.setText(form.format(person.getDob()));
+        genderComboBox.setSelectedItem(person.getGender());
+        addressField2.setText(person.getAddress1());
+        addressField1.setText(person.getAddress2());
+        townField.setText(person.getTown());
+        zipCodeField.setText(person.getZipCode());
+        occupationField.setText(person.getZipCode());
+        emailIDField.setText(person.getEmailId());
+        userNameTxtField.setText(userAccount.getUserName());
+        phoneNumberField.setText(String.valueOf(person.getPhoneNumber()));
+        
+        addInputVerifiers();
+        
     }
-
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+      private void addInputVerifiers() {
+          
+        InputVerifier stringValidation = new ValidateStrings();
+        firstNameField.setInputVerifier(stringValidation);
+        lastNameField.setInputVerifier(stringValidation);
+        addressField1.setInputVerifier(stringValidation);
+        addressField2.setInputVerifier(stringValidation);
+        townField.setInputVerifier(stringValidation);
+        occupationField.setInputVerifier(stringValidation);
+        userNameTxtField.setInputVerifier(stringValidation);
+        
+      
+        InputVerifier dobValidtion = new ValidateDateOfBirth();
+        dobField.setInputVerifier(dobValidtion);
+        
+        InputVerifier numberValidation = new ValidateNumbers();
+        zipCodeField.setInputVerifier(numberValidation);
+        
+          InputVerifier emailValidtion = new ValidateEmailTextField();
+           emailIDField.setInputVerifier(emailValidtion);
+     
+        
+       InputVerifier phnumberValidation = new ValidatePhoneNumber();
+        phoneNumberField.setInputVerifier(phnumberValidation);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

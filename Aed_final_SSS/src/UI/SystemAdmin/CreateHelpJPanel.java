@@ -4,22 +4,69 @@
  */
 package UI.SystemAdmin;
 
+import business.EcoSystem;
+import business.common.NeedHelp;
+import business.common.ValidateStrings;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author DELL
  */
 public class CreateHelpJPanel extends javax.swing.JPanel {
-
+ private JPanel userProcessContainer;
+    private EcoSystem system;
     /**
      * Creates new form CreateHelpJPanel
      */
-    public CreateHelpJPanel() {
+    public CreateHelpJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-    }
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+        
 
+        addInputVerifiers();
+        populateComboBxHelpType();
+    }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+    public void populateComboBxHelpType()
+    {
+      helpTypeComboBx.removeAllItems();
+      helpTypeComboBx.addItem("Immediate");
+      helpTypeComboBx.addItem("Need in a day");
+      helpTypeComboBx.addItem("Not Immediate service");
+      helpTypeComboBx.addItem("In a Week");
+    }
+    
+     private void addInputVerifiers() {
+        InputVerifier stringValidation = new ValidateStrings();
+        helpnameJTxtField.setInputVerifier(stringValidation);
+       }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,7 +264,11 @@ public class CreateHelpJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-
+ public void resetFields()
+    {
+        helpnameJTxtField.setText("");
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton cancelBtn;

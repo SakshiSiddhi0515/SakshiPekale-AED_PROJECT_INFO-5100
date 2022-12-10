@@ -3,20 +3,82 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.supervisor;
+import business.common.ValidateDateOfBirth;
+import business.common.ValidateEmailTextField;
+import business.common.ValidateNumbers;
+import business.common.ValidatePhoneNumber;
+import business.common.ValidateStrings;
+import business.personpkg.Person;
+import business.userAccountpkg.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author DELL
  */
 public class CreateSupervisorProfileJPanel extends javax.swing.JPanel {
-
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
     /**
      * Creates new form CreateSupervisorProfileJPanel
      */
     public CreateSupervisorProfileJPanel() {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        addInputVerifiers();
+        supNameField.setText(userAccount.getPerson().getName());
     }
-
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    private void addInputVerifiers() {
+          
+        InputVerifier stringValidation = new ValidateStrings();
+        supNameField.setInputVerifier(stringValidation);
+        supaddressField.setInputVerifier(stringValidation);
+        townField.setInputVerifier(stringValidation);
+        occupationField.setInputVerifier(stringValidation);
+        
+        InputVerifier dobValidtion = new ValidateDateOfBirth();
+        supDobField.setInputVerifier(dobValidtion);
+        
+        InputVerifier numberValidation = new ValidateNumbers();
+        zipCodeField.setInputVerifier(numberValidation);
+        
+        InputVerifier phnumberValidation = new ValidatePhoneNumber();
+        phoneNumberField.setInputVerifier(phnumberValidation);
+        
+        InputVerifier emailValidtion = new ValidateEmailTextField();
+        emailIDField.setInputVerifier(emailValidtion);
+     
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -279,7 +341,19 @@ public class CreateSupervisorProfileJPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_createProfileButtonActionPerformed
-
+    public void resetFields()
+{
+    supNameField.setText("");
+    supDobField.setText("");
+    supaddressField.setText("");
+    townField.setText("");
+    occupationField.setText("");
+    zipCodeField.setText("");
+    emailIDField.setText("");
+    phoneNumberField.setText("");
+    
+    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel address;

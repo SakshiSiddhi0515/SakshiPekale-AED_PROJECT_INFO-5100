@@ -3,20 +3,81 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.supervisor;
+import business.EcoSystem;
+import business.common.LatLong;
+import business.common.SendEmailAndTextMessage;
+import business.networkpkg.Network;
+import business.personpkg.Volunteer;
+import business.rolepkg.Role;
+import business.workQueuepkg.SupervisorWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.util.Date;
+import java.util.HashSet;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author DELL
  */
 public class SupervisorProcessRequestAreaJPanel extends javax.swing.JPanel {
-
+private JPanel userProcessContainer;
+    private SupervisorWorkRequest request;
+    private  EcoSystem ecoSystem;
     /**
      * Creates new form SupervisorProcessRequestAreaJPanel
      */
-    public SupervisorProcessRequestAreaJPanel() {
+    public SupervisorProcessRequestAreaJPanel(JPanel userProcessContainer, SupervisorWorkRequest request, EcoSystem ecoSystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.request = request;
+        this.ecoSystem = ecoSystem;
+        resultComboBox.removeAllItems();
+        resultComboBox.addItem(SupervisorWorkRequest.REQUEST_APPROVED);
+        resultComboBox.addItem(SupervisorWorkRequest.REQUEST_REJECT);
+        
+        populateNetworkComboBox();
     }
+ @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    private void populateNetworkComboBox(){
+        
+        assignNetworkCombo.removeAllItems();
+         if(ecoSystem.getNetworkList().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null, "Networks does not exist! Please create networks.");  
+         return;        
+        }
+        assignNetworkCombo.addItem("Please assign a Network");
+        HashSet<String> hs = new HashSet();
+           
+        for(Network network : ecoSystem.getNetworkList())
+        {
+             assignNetworkCombo.addItem(network);
+        }
 
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

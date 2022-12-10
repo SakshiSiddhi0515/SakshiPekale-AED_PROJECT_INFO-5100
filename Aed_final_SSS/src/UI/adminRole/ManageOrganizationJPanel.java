@@ -3,20 +3,106 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.adminRole;
+import business.enterprisepkg.Enterprise;
+import business.enterprisepkg.Enterprise.EnterpriseType;
+import business.organizationpkg.Organization;
+import business.organizationpkg.Organization.Type;
+import business.organizationpkg.OrganizationDirectory;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author DELL
  */
 public class ManageOrganizationJPanel extends javax.swing.JPanel {
-
+    private OrganizationDirectory directory;
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
     /**
      * Creates new form ManageOrganizationJPanel
      */
-    public ManageOrganizationJPanel() {
+    public ManageOrganizationJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.directory = enterprise.getOrganizationDirectory();
+        
+        populateOrganizationTable();
+  
+        populateOrganizationComboBox();
+         userProcessContainer.setBackground(new Color(182,201,233));
     }
-
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+    public void populateOrganizationComboBox()
+    {
+        
+      organizationJComboBox.removeAllItems();
+    
+            if(enterprise.getEnterpriseType().getValue().equals(EnterpriseType.NonProfit.getValue()))
+            {
+              organizationJComboBox.addItem(Type.Donor);
+            }
+            else if(enterprise.getEnterpriseType().getValue().equals(EnterpriseType.HeartHelp.getValue()))
+            {
+             organizationJComboBox.addItem(Type.HelpSeeker);  
+             organizationJComboBox.addItem(Type.Supervisor); 
+            }
+            else if(enterprise.getEnterpriseType().getValue().equals(EnterpriseType.Government.getValue()))
+            {
+             organizationJComboBox.addItem(Type.Mayor);  
+            }
+            else if(enterprise.getEnterpriseType().getValue().equals(EnterpriseType.School.getValue()))
+            {
+            organizationJComboBox.addItem(Type.Volunteer);     
+            organizationJComboBox.addItem(Type.Transport);
+            }
+            else if(enterprise.getEnterpriseType().getValue().equals(EnterpriseType.Hospital.getValue()))
+            {
+            organizationJComboBox.addItem(Type.Doctor);     
+            }
+            
+           
+    }
+    
+    private void populateOrganizationTable(){
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (Organization organization : directory.getOrganizationList()){
+            Object[] row = new Object[2];
+            row[0] = organization.getOrgId();
+            row[1] = organization;
+            
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

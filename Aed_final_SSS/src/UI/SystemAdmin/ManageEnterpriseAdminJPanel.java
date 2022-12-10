@@ -4,21 +4,109 @@
  */
 package UI.SystemAdmin;
 
+import business.EcoSystem;
+import business.common.ValidatePasswords;
+import business.common.ValidateStrings;
+import business.enterprisepkg.Enterprise;
+import business.networkpkg.Network;
+import business.organizationpkg.Organization;
+import business.personpkg.Person;
+import business.rolepkg.AdminRole;
+import business.userAccountpkg.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author DELL
  */
 public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
+    private JPanel userProcessContainer;
+    private EcoSystem system;
 
     /**
      * Creates new form ManageEnterpriseAdminJPanel
      */
-    public ManageEnterpriseAdminJPanel() {
+    public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+        addInputVerifiers();
+        populateEnterpriseUserTable();
+        populateNetworkComboBox();
+    }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
     }
 
+    private void populateEnterpriseUserTable() {
+        DefaultTableModel model = (DefaultTableModel) enterpriseUserJTable.getModel();
+
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    Object[] row = new Object[3];
+                    row[0] = enterprise.getName();
+                    row[1] = network.getCity();
+                    row[2] = userAccount;
+
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+    
+      private void addInputVerifiers() {
+        InputVerifier stringValidation = new ValidateStrings();
+        nameJTextField.setInputVerifier(stringValidation);
+        usernameJTextField.setInputVerifier(stringValidation);
+        InputVerifier passwordValidation = new ValidatePasswords();
+        passwordJPasswordField.setInputVerifier(passwordValidation);
+        
+        
+    }
+    
+    private void populateNetworkComboBox(){
+        networkJComboBox.removeAllItems();
+        
+        for (Network network : system.getNetworkList()){
+            networkJComboBox.addItem(network);
+        }
+    }
+    
+    private void populateEnterpriseComboBox(Network network){
+        enterpriseJComboBox.removeAllItems();
+        
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+            enterpriseJComboBox.addItem(enterprise);
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -391,15 +479,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton1;
     private javax.swing.JButton cancelJButton;
-    private javax.swing.JButton createHelpJButton;
-    private javax.swing.JButton createHelpJButton1;
     private javax.swing.JButton deleteNetwork;
     private javax.swing.JComboBox enterpriseJComboBox;
     private javax.swing.JTable enterpriseUserJTable;
-    private javax.swing.JLabel helpName;
-    private javax.swing.JLabel helpName1;
-    private javax.swing.JTextField helpnameJTxtField;
-    private javax.swing.JTextField helpnameJTxtField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -407,15 +489,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel manageEnt2;
-    private javax.swing.JLabel manageEnt3;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;
     private javax.swing.JPasswordField passwordJPasswordField;

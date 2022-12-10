@@ -3,20 +3,92 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.manager;
-
+import business.EcoSystem;
+import business.common.Validation;
+import business.enterprisepkg.Enterprise;
+import business.organizationpkg.DonorOrganization;
+import business.organizationpkg.HelpSeekerOrganization;
+import business.organizationpkg.Organization;
+import business.organizationpkg.TransportOrganization;
+import business.organizationpkg.VolunteerOrganization;
+import business.userAccountpkg.UserAccount;
+import business.workQueuepkg.DonationRequest;
+import business.workQueuepkg.NeedHelpWorkRequest;
+import business.workQueuepkg.NeedSensorDeviceWorkRequest;
+import business.workQueuepkg.SupervisorWorkRequest;
+import business.workQueuepkg.WorkRequest;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map.Entry;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 /**
  *
  * @author DELL
  */
 public class HeartHelpEnterpriseManagerWorkArea extends javax.swing.JPanel {
-
+  private JPanel userProcessContainer;
+   private  Enterprise enterprise;
+   private EcoSystem ecoSystem;
+   private UserAccount userAccount;
+   private VolunteerOrganization vo;
+    private DonorOrganization do1 ;
+    private HelpSeekerOrganization hsOrg;
+    private TransportOrganization transOrg;
+    private List<Entry<String, Integer>> topVolunteeerList;
+     private List<Entry<String, Integer>> topDonorList;
     /**
      * Creates new form HeartHelpEnterpriseManagerWorkArea
      */
-    public HeartHelpEnterpriseManagerWorkArea() {
+    public HeartHelpEnterpriseManagerWorkArea(JPanel userProcessContainer, Enterprise enterprise, EcoSystem ecoSystem, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
+        this.userAccount = userAccount;
+        valueLabel.setText(enterprise.getName());
+      //  setBackground(new Color(182,201,233));
+        populatePieChartData();
+        populateTextFields();
+        
+        viewDetailedReportBtn.setVisible(false);
     }
-
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,7 +306,345 @@ public class HeartHelpEnterpriseManagerWorkArea extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewDetailedReportBtnActionPerformed
+  public void populateTextFields()
+      {
+          int totalHelpReq = 0;
+          int totalTransportReq = 0;
+          String totalDonorReq = "";
+          int totalAmountDonated =0;
+          try
+          {
+      if(do1!=null){
+      totalDonorReq = String.valueOf(do1.getWorkQueue().getWorkRequestList().size());
+              
+        for(UserAccount donorAccount : do1.getUserAccountDirectory().getUserAccountList())
+      {
+       if(!donorAccount.getWorkQueue().getWorkRequestList().isEmpty())
+       {
+         for(WorkRequest wrkrequest : donorAccount.getWorkQueue().getWorkRequestList())
+         {  
+           if(wrkrequest.getMessage().equalsIgnoreCase("Donated Money"))
+             {
+                 DonationRequest donationRequest = (DonationRequest)wrkrequest;
+                totalAmountDonated+= Integer.parseInt(donationRequest.getDonation().getAmount());
+             }
+        
+          }
+         }
+         
+       }
+         } 
+      if(vo!=null)
+      {
+          for(WorkRequest request : vo.getWorkQueue().getWorkRequestList())
+          {
+             if(request.getMessage().equalsIgnoreCase("Need Help"))
+             {
+               totalHelpReq++;     
+             }
+             
+             
+           }
+          for(UserAccount userAccount : vo.getUserAccountDirectory().getUserAccountList())
+          {
+           if(!userAccount.getWorkQueue().getWorkRequestList().isEmpty())
+           {
+            for(WorkRequest req : userAccount.getWorkQueue().getWorkRequestList())
+            {
+              if(req.getMessage().equalsIgnoreCase("Need Help"))
+             {
+               totalHelpReq++;     
+             }   
+            }
+           }
+          }
+      } 
+      if(transOrg!=null)
+      {
+           for(WorkRequest request : transOrg.getWorkQueue().getWorkRequestList())
+          {
+              if(request.getMessage().equals("Need Transport"))
+              {
+              totalTransportReq++;    
+              }
+          }
+      }   
+          totHelpReqField.setText(String.valueOf(totalHelpReq));
+          totSenDevReqField.setText(totalDonorReq);
+          totTransReqField.setText(String.valueOf(totalTransportReq));
+          donatedAmntField.setText(String.valueOf(totalAmountDonated));
+          }
+          catch(Exception e)
+          {
+         JOptionPane.showMessageDialog(null, " Data is not availble for few organizations!","warning", JOptionPane.WARNING_MESSAGE);
+         return;      
+          }
+      }
+    
+    public void populatePieChartData()
+    {
+       DefaultPieDataset dataSet = new DefaultPieDataset();
+       int totalHelpSeekers = 0;
+       int totalVolunteers = 0;
+       int totalDonors = 0;
+       int totalDrivers = 0;
+       try
+       {
+       for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList())
+       {
+          if(organization instanceof HelpSeekerOrganization) 
+          {
+          this.hsOrg = (HelpSeekerOrganization)organization;   
+           totalHelpSeekers = organization.getPersonDirectory().getCustomerLsit().size();
+          }
+       }
+       try
+       {
+         this.vo = Validation.getVolunteerOrganization(ecoSystem, userAccount);
+       }
+        catch(NullPointerException npe)
+       {
+        JOptionPane.showMessageDialog(null, " Voluteer Organination does not exist!","warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+       }
+       if(vo!=null)
+       {
+        totalVolunteers = vo.getPersonDirectory().getVolunteerList().size();
+       }
+        
+        this.do1 = Validation.getDonorOrganization(ecoSystem, userAccount);
+        if(do1!=null)
+        {
+        totalDonors = do1.getPersonDirectory().getPersonList().size();
+        }
+        this.transOrg = Validation.getTransportOrganization(ecoSystem, userAccount);
+        if(transOrg!=null)
+        {
+        totalDrivers = transOrg.getPersonDirectory().getPersonList().size();
+        }
+         
+         dataSet.setValue("Total No of Help Seekers",totalHelpSeekers);
+         dataSet.setValue("Total No of Volunteers", totalVolunteers );
+         dataSet.setValue("Total No of Donors",totalDonors);
+         dataSet.setValue("Total No of Drivers",totalDrivers);
+     
+         JFreeChart  chart = ChartFactory.createPieChart3D("Pie Chart for "+userAccount.getNetwork().getCity(), dataSet, true, true, Locale.ENGLISH);
+            chart.setBackgroundPaint(Color.WHITE);
+            chart.getTitle().setPaint(Color.BLUE);
+          ChartPanel chartpanel = new ChartPanel(chart);
+        chartpanel.setDomainZoomable(true);
 
+        pieChartPanel.setLayout(new BorderLayout());
+        pieChartPanel.add(chartpanel, BorderLayout.EAST); 
+        pieChartPanel.setVisible(true);
+       }
+       
+       catch(NullPointerException npe)
+       {
+        JOptionPane.showMessageDialog(null, " No Data to display as of now!","warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+       }
+        
+    }
+    
+    public void findTop3Volunteers()
+    {
+     int noOfRequests = 0;  
+     HashMap<String, Integer> volMap = new HashMap<>(); 
+      try
+      {
+     for(UserAccount volunteerAccount : vo.getUserAccountDirectory().getUserAccountList())
+      {
+        if(!volunteerAccount.getWorkQueue().getWorkRequestList().isEmpty())
+       {
+         for(WorkRequest request : volunteerAccount.getWorkQueue().getWorkRequestList() )
+         {
+          if(request.getMessage().equalsIgnoreCase("Need Help") && 
+                  request.getStatus().equalsIgnoreCase("Completed") )
+          {
+              NeedHelpWorkRequest nhwr = (NeedHelpWorkRequest)request;  
+          if(nhwr.getRequestResult().equalsIgnoreCase(SupervisorWorkRequest.REQUEST_ACCEPT))
+          {
+          ++noOfRequests;    
+          }
+          }
+         }
+          volMap.put(volunteerAccount.getPerson().getName(), noOfRequests);
+          noOfRequests = 0;
+         }
+        
+       }
+     
+          System.out.println("volMap >>>>>>" +volMap.toString());
+            
+          List<Entry<String, Integer>> list = new LinkedList<>(volMap.entrySet());
+        
+          Collections.sort(list, new Comparator<Entry<String, Integer>>()
+            {
+            public int compare(Entry<String, Integer> o1,
+                    Entry<String, Integer> o2)
+            {
+               if(o1.getValue()>o2.getValue())
+               {
+                return 1;
+               }
+                else if(o1.getValue()<o2.getValue())
+                {
+                    return -1;
+                }
+                return 0;
+            }
+             
+            });
+          Collections.reverse(list);
+          System.out.println("After Sort "+list.toString());
+          
+          topVolunteeerList = list;
+          
+          DefaultCategoryDataset  dataSet = new DefaultCategoryDataset();
+          int count = 0;
+        
+            if(volMap.entrySet().size()<=3)
+            {
+           for (Entry<String, Integer> entry : list)
+            {
+            System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+            dataSet.setValue(entry.getValue(), "No of Help Requests", entry.getKey());
+            }
+            }
+            else  if(volMap.entrySet().size()>3)
+            {
+            for (Entry<String, Integer> entry : list)
+            {
+            System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+            dataSet.setValue(entry.getValue(), "No of Help Requests", entry.getKey());
+            count ++;
+            if(count == 3)
+            {
+              break;
+            }
+            }
+            }
+             JFreeChart barchart = ChartFactory.createBarChart(" Top 3 Volunteers by no of Requests " ," Volunteer Name " ,"No of Help Requests", dataSet,PlotOrientation.VERTICAL, false, true, false);
+             barchart.setBackgroundPaint(Color.WHITE);
+             barchart.getTitle().setPaint(Color.BLUE);
+             CategoryPlot plot = barchart.getCategoryPlot();
+             plot.setBackgroundPaint(Color.CYAN);
+             
+            ChartFrame frame = new ChartFrame("Bar Chart for Top 3 Volunteers ", barchart);
+            frame.setVisible(true);
+            frame.setSize(450,350);
+            
+      }
+      catch(NullPointerException npe)
+       {
+        npe.printStackTrace();
+        JOptionPane.showMessageDialog(null, " No Data to display as of now!","warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+       
+       }
+      
+    }
+    
+     public void findTop3Donors()
+    {
+        
+     int noOfRequests = 0;  
+     int donatedAmount = 0;
+     HashMap<String, Integer> donorMap = new HashMap<>(); 
+     HashMap<String, Integer> donorAmountMap = new HashMap<>();
+      try
+      {
+     if(do1 ==null)
+     {
+     JOptionPane.showMessageDialog(null, "Donor Organization does not exist!","warning", JOptionPane.WARNING_MESSAGE);
+        return;    
+     }
+     for(UserAccount donorAccount : do1.getUserAccountDirectory().getUserAccountList())
+      {
+             System.out.println("request"+donorAccount.getUserName());
+        if(!donorAccount.getWorkQueue().getWorkRequestList().isEmpty())
+       {
+           System.out.println("request"+donorAccount.getUserName());
+        for(WorkRequest wrkrequest : donorAccount.getWorkQueue().getWorkRequestList() )
+         {  
+           if(wrkrequest.getMessage().equalsIgnoreCase("Donated Money"))
+             {
+                 DonationRequest donationRequest = (DonationRequest)wrkrequest;
+                donatedAmount+= Integer.parseInt(donationRequest.getDonation().getAmount());
+               ++noOfRequests; 
+             }
+           if(wrkrequest.getMessage().equalsIgnoreCase("Need Sensor Device"))
+           {
+               NeedSensorDeviceWorkRequest nsdwr = (NeedSensorDeviceWorkRequest)wrkrequest;
+               if(nsdwr.getdonationRequestResult().equalsIgnoreCase(SupervisorWorkRequest.REQUEST_ACCEPT))
+               {
+               ++noOfRequests; 
+               }
+           }
+          }
+          noOfRequests+=donatedAmount;  
+         donorMap.put(donorAccount.getPerson().getName(), noOfRequests);
+         noOfRequests=0;
+        }
+         
+       }
+
+         List<Entry<String, Integer>> list = new LinkedList<>(donorMap.entrySet());
+        
+          Collections.sort(list, new Comparator<Entry<String, Integer>>()
+            {
+            public int compare(Entry<String, Integer> o1,
+                    Entry<String, Integer> o2)
+            {
+               return o1.getValue().compareTo(o2.getValue());
+             }
+            });
+          Collections.reverse(list);
+          
+          topDonorList = list;
+          
+          DefaultCategoryDataset  dataSet = new DefaultCategoryDataset();
+          int count = 0;
+        
+            if(donorMap.entrySet().size()<=3)
+            {
+           for (Entry<String, Integer> entry : list)
+            {
+            System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+            dataSet.setValue(entry.getValue(), "Values", entry.getKey());
+            }
+            }
+            else  if(donorMap.entrySet().size()>3)
+            {
+            for (Entry<String, Integer> entry : list)
+            {
+            System.out.println("Key : " + entry.getKey() + " Value : "+ entry.getValue());
+            dataSet.setValue(entry.getValue(), "Values", entry.getKey());
+            count ++;
+            if(count == 3)
+            {
+                break;
+            }
+            }
+            }
+             JFreeChart barchart = ChartFactory.createBarChart(" Top 3 Donors " ," Donor Name " ,"No of Requests", dataSet,PlotOrientation.VERTICAL, false, true, false);
+             barchart.setBackgroundPaint(Color.WHITE);
+             barchart.getTitle().setPaint(Color.BLUE);
+             CategoryPlot plot = barchart.getCategoryPlot();
+             plot.setBackgroundPaint(Color.CYAN);
+            ChartFrame frame = new ChartFrame("Bar Chart for Top 3 Donors ", barchart);
+            frame.setVisible(true);
+            frame.setSize(450,350);
+         
+      }
+      catch(NullPointerException npe)
+       {
+        JOptionPane.showMessageDialog(null, " No Data to display as of now!","warning", JOptionPane.WARNING_MESSAGE);
+        return; 
+       }
+      
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField donatedAmntField;

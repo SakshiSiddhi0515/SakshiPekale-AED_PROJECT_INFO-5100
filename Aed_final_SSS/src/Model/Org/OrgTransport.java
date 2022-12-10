@@ -5,7 +5,7 @@
 package Model.Org;
 
 import java.util.ArrayList;
-import Model.Role.DriverRole;
+import Model.Role.Role_driver;
 import Model.Role.Role;
 
 /**
@@ -22,7 +22,7 @@ public class OrgTransport extends Organization{
      @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new DriverRole());
+        roles.add(new Role_driver());
         return roles;
     }
 }

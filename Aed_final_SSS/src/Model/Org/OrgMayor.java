@@ -5,7 +5,7 @@
 package Model.Org;
 
 import java.util.ArrayList;
-import Model.Role.MayorRole;
+import Model.Role.Role_mayor;
 import Model.Role.Role;
 
 /**
@@ -22,7 +22,7 @@ public class OrgMayor extends Organization{
      @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new MayorRole());
+        roles.add(new Role_mayor());
         return roles;
     }  
 }

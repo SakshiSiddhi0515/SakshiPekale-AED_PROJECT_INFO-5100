@@ -5,8 +5,8 @@
 package Model.Org;
 import Model.People.People_Directory;
 import Model.Role.Role;
-import Model.userAccountpkg.UserAccountDirectory;
-import Model.workQueuepkg.WorkQueue;
+import Model.User.UserAccountDirectory;
+import Model.Work.WorkQueue;
 import java.util.ArrayList;
 
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author sakshipekale
  */
-public class Organization {
+public abstract class Organization {
     private String name;
     private UserAccountDirectory userAccountDirectory;
     private People_Directory personDirectory;

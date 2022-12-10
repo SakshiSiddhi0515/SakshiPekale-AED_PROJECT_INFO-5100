@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model.Role;
-import Model.EcoSystem;
-import Model.enterprisepkg.Enterprise;
+import Model.System.EcoSystem;
+import Model.enterprise.enterprises;
 import Model.Org.Organization;
-import Model.userAccountpkg.UserAccount;
+import Model.User.UserAccount;
 import javax.swing.JPanel;
 import userInterface.SystemAdmin.SystemAdminWorkAreaJPanel;
 
@@ -16,7 +16,7 @@ import userInterface.SystemAdmin.SystemAdminWorkAreaJPanel;
  */
 public class Role_systemadmin extends Role{
    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem system) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, enterprises enterprise, EcoSystem system) {
         return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
     }
     @Override

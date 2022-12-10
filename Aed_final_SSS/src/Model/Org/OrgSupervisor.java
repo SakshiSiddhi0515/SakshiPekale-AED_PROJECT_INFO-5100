@@ -5,9 +5,9 @@
 package Model.Org;
 
 import java.util.ArrayList;
-import Model.Role.HeartHelpManagerRole;
+import Model.Role.Role_manager;
 import Model.Role.Role;
-import Model.Role.SupervisorRole;
+import Model.Role.Role_supervisor;
 /**
  *
  * @author sakshipekale
@@ -22,8 +22,8 @@ public class OrgSupervisor extends Organization{
      @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new SupervisorRole());
-        roles.add(new HeartHelpManagerRole());
+        roles.add(new Role_supervisor());
+        roles.add(new Role_manager());
         return roles;
     }
 }

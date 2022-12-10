@@ -3,20 +3,111 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.manager;
+import business.common.SendEmailAndTextMessage;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.awt.RenderingHints;
+import java.util.List;
+import java.util.Map.Entry;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author DELL
  */
 public class ViewDetailedReportMayorJPanel extends javax.swing.JPanel {
-
+     private List<Entry<String, Integer>> topVolunteeerList;
+     private List<Entry<String, Integer>> topDonorList;
+     private JPanel userProcessContainer;
     /**
      * Creates new form ViewDetailedReportMayorJPanel
      */
-    public ViewDetailedReportMayorJPanel() {
+    public ViewDetailedReportMayorJPanel(JPanel userProcessContainer, List<Entry<String, Integer>> topVolunteeerList, List<Entry<String, Integer>> topDonorList) {
         initComponents();
+        this.topVolunteeerList = topVolunteeerList;
+        this.topDonorList = topDonorList;
+        this.userProcessContainer = userProcessContainer;
+        
+        volunteerPanel.setVisible(false);
+        donorPanel.setVisible(false);
+    
+        populateTopVolunteerTableDetails();
+        populateTopDonorTableDetails();
     }
-
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+     public void populateTopVolunteerTableDetails()
+    {
+     volunteerPanel.removeAll();
+     volunteerPanel.revalidate();
+      
+        int count = 0;
+        
+        DefaultTableModel dtm = (DefaultTableModel)volTable.getModel();
+        dtm.setRowCount(0);
+      if(count<3)
+      {
+        for (Entry<String, Integer> entry : topVolunteeerList)
+            {
+                Object[] rowData = new Object[2];
+            rowData[0] = entry.getKey();
+            rowData[1] = String.valueOf(entry.getValue());
+           
+            dtm.addRow(rowData);
+            }
+       }
+      volunteerPanel.revalidate();
+      volunteerPanel.setVisible(true);
+   }
+   public void populateTopDonorTableDetails()
+    {
+     volunteerPanel.removeAll();
+     volunteerPanel.revalidate();
+      
+        int count = 0;
+        
+        DefaultTableModel dtm = (DefaultTableModel)donTable.getModel();
+        dtm.setRowCount(0);
+      if(count<3)
+      {
+        for (Entry<String, Integer> entry : topDonorList)
+            {
+                Object[] rowData = new Object[2];
+            rowData[0] = entry.getKey();
+            rowData[1] = String.valueOf(entry.getValue());
+           
+            dtm.addRow(rowData);
+            }
+       }
+      donorPanel.revalidate();
+      donorPanel.setVisible(true);
+   }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

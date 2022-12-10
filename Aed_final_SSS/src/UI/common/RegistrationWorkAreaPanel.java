@@ -3,20 +3,163 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.common;
+import business.EcoSystem;
+import business.common.SendEmailAndTextMessage;
+import business.common.ValidateDateOfBirth;
+import business.common.ValidateEmailTextField;
+import business.common.ValidateNumbers;
+import business.common.ValidatePasswords;
+import business.common.ValidatePhoneNumber;
+import business.common.ValidateStrings;
+import business.common.Validation;
+import business.enterprisepkg.Enterprise;
+import business.enterprisepkg.HeartHelpEnterprise;
+import business.enterprisepkg.HospitalEnterprise;
+import business.enterprisepkg.SchoolEnterprise;
+import business.networkpkg.Network;
+import business.organizationpkg.DoctorOrganization;
+import business.organizationpkg.HelpSeekerOrganization;
+import business.organizationpkg.Organization;
+import business.organizationpkg.SupervisorOrganization;
+import business.organizationpkg.VolunteerOrganization;
+import business.personpkg.HelpSeeker;
+import business.personpkg.Person;
+import business.personpkg.PersonDirectory;
+import business.personpkg.Volunteer;
+import business.rolepkg.DoctorRole;
+import business.rolepkg.HelpSeekerRole;
+import business.rolepkg.VolunteerRole;
+import business.userAccountpkg.UserAccount;
+import business.workQueuepkg.SupervisorWorkRequest;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author DELL
  */
 public class RegistrationWorkAreaPanel extends javax.swing.JPanel {
-
+  private JPanel userProcessContainer;
+    private PersonDirectory personDirectory;
+    private EcoSystem ecoSystem; 
+    private Enterprise enterprise;
+    private Organization organization;
     /**
      * Creates new form RegistrationWorkAreaPanel
      */
-    public RegistrationWorkAreaPanel() {
+    public RegistrationWorkAreaPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+       this.ecoSystem = ecoSystem;
+       
+       helpSeekerPane.setVisible(false);
+         
+        addInputVerifiers();
+        
+        populateCountryComboBox();
+        volNetworkCombo.setVisible(false);
+        volNetwork.setVisible(false);
     }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+      private void addInputVerifiers() {
+          
+        InputVerifier stringValidation = new ValidateStrings();
+        firstNameField.setInputVerifier(stringValidation);
+        lastNameField.setInputVerifier(stringValidation);
+        addressField1.setInputVerifier(stringValidation);
+        addressField2.setInputVerifier(stringValidation);
+        townField.setInputVerifier(stringValidation);
+        occupationField.setInputVerifier(stringValidation);
+        addressField1.setInputVerifier(stringValidation);
+        addressField2.setInputVerifier(stringValidation);
+        userNameJTxtField.setInputVerifier(stringValidation);
+        
+        
+        InputVerifier passwordValidation = new ValidatePasswords();
+        passwordField.setInputVerifier(passwordValidation);
+        confirmPasswordField.setInputVerifier(passwordValidation);
+        
+        InputVerifier dobValidtion = new ValidateDateOfBirth();
+        DobField.setInputVerifier(dobValidtion);
+        
+        InputVerifier numberValidation = new ValidateNumbers();
+        zipCodeField.setInputVerifier(numberValidation);
+        
+        InputVerifier emailValidtion = new ValidateEmailTextField();
+        emailIDField.setInputVerifier(emailValidtion);
+     
+         InputVerifier phnumberValidation = new ValidatePhoneNumber();
+        phoneNumberField.setInputVerifier(phnumberValidation);
+      
+    }
+    
+    private void populateCountryComboBox(){
+        countryComboBox.removeAllItems();
+         if(ecoSystem.getNetworkList().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null, "Networks does not exist! Please create networks.");  
+         return;        
+        }
+        countryComboBox.addItem("Please select a country");
+        String networkVal = "";   
+        HashSet<String> hs = new HashSet();
+           
+        for(Network network : ecoSystem.getNetworkList()){
+           if(!network.getCountry().equals(networkVal))
+           {
+               hs.add(network.getCountry());
+           }
+        }
+        for(String s : hs)
+        {
+         countryComboBox.addItem(s);
+        }
+        }
+    
+         private void populateNetworkComboBox()
+         {
+        
+        helpSeekerNetworkCombo.removeAllItems();
+         if(ecoSystem.getNetworkList().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null, "Networks does not exist! Sorry for inconvenience.");  
+         return;        
+        }
+        helpSeekerNetworkCombo.addItem("Please Choose a Network");
+           
+        for(Network network : ecoSystem.getNetworkList()){
+             helpSeekerNetworkCombo.addItem(network);
+         }
 
+        }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -886,7 +1029,111 @@ public class RegistrationWorkAreaPanel extends javax.swing.JPanel {
         populateNetworkComboBox();
 
     }//GEN-LAST:event_isHelpSeekerActionPerformed
-
+public void resetFields()
+    {
+     userNameJTxtField.setText("");
+     passwordField.setText("");
+     confirmPasswordField.setText("");
+    firstNameField.setText("");
+    lastNameField.setText("");
+    DobField.setText("");
+    addressField1.setText("");
+    addressField2.setText("");
+    townField.setText("");
+    zipCodeField.setText("");
+    occupationField.setText("");
+    emailIDField.setText("");
+    emailIDField1.setText("");
+    phoneNumberField.setText("");
+    isHelpSeeker.setSelected(false);
+    isVolunteer.setSelected(false);
+    isDoctorRadioBtn.setSelected(false);
+     
+    }
+public void getEnterprise(Network network)
+    {
+          try
+                {
+                 for (Network n : ecoSystem.getNetworkList())
+                    {
+                    if(n.getCity().equals(network.getCity()))   
+                    {  
+                   for(Enterprise e : n.getEnterpriseDirectory().getEnterpriseList())
+                      {
+                           if(e instanceof SchoolEnterprise && isVolunteer.isSelected())
+                           {
+                             this.enterprise = e;
+                             network = n;
+                            }
+                           else if(e instanceof HeartHelpEnterprise && isHelpSeeker.isSelected())
+                           {
+                             this.enterprise = e;
+                              network = n;
+                            }
+                            else if(e instanceof HospitalEnterprise && isDoctorRadioBtn.isSelected())
+                           {
+                             this.enterprise = e;
+                              network = n;
+                           }
+                      }
+                    }
+                    }
+                }
+                catch(Exception e)
+                {
+                 JOptionPane.showMessageDialog(null, "Please create Enterprise","warning", JOptionPane.WARNING_MESSAGE);
+                    return;    
+                }
+    }
+    
+    public String buildEmailTxtMsg(String usrNm, String pwd)
+    {
+      StringBuilder emailMsgTxt = new StringBuilder();
+        emailMsgTxt.append("Please find username and password to login into our application");
+        emailMsgTxt.append(System.lineSeparator());
+        emailMsgTxt.append(System.lineSeparator());
+        emailMsgTxt.append("username : ".concat(usrNm));
+        emailMsgTxt.append(System.lineSeparator());
+        emailMsgTxt.append("password : ".concat(pwd));
+        emailMsgTxt.append(System.lineSeparator());
+        emailMsgTxt.append(System.lineSeparator());
+        emailMsgTxt.append("Thank You");
+        emailMsgTxt.append("HeartHelp");
+        
+        return emailMsgTxt.toString();
+    }
+    
+    public void getOrganization(String orgVal, Enterprise e){
+     
+        try
+        {
+     for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
+      
+       if(orgVal.equals("Volunteer") && organization instanceof VolunteerOrganization)
+        {
+              this.organization = organization;
+              this.personDirectory = organization.getPersonDirectory();
+        
+        }     
+     else if(orgVal.equals("HelpSeeker") && organization instanceof HelpSeekerOrganization)
+             {
+               this.organization = organization;
+               this.personDirectory = organization.getPersonDirectory();
+             }  
+       
+       else if(orgVal.equals("Doctor") && organization instanceof DoctorOrganization)
+             {
+               this.organization = organization;
+               this.personDirectory = organization.getPersonDirectory();
+             } 
+             }
+        }
+        catch(Exception ex)
+        {
+         return;     
+        }
+    }
+    
     private void isVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isVolunteerActionPerformed
         helpSeekerPane.setVisible(false);
         volNetworkCombo.setVisible(true);
@@ -947,7 +1194,22 @@ public class RegistrationWorkAreaPanel extends javax.swing.JPanel {
     private void volNetworkComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volNetworkComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_volNetworkComboActionPerformed
-
+ public void fillForm()
+    {
+    firstNameField.setText("John");
+    lastNameField.setText("Peter");
+    DobField.setText("12/12/1938");
+    genderComboBox.setSelectedItem("Female");
+    addressField1.setText("433");
+    addressField2.setText("Kenmore");
+    townField.setText("boston");
+    zipCodeField.setText("02145");
+    occupationField.setText("student");
+    emailIDField.setText("sruthi.ravula@gmail.com");
+    emailIDField1.setText("sruthi.ravula@gmail.com");
+    phoneNumberField.setText("8978989876");
+  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField DobField;

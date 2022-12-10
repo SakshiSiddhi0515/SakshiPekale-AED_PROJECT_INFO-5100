@@ -3,20 +3,75 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.SystemAdmin;
-
+import business.EcoSystem;
+import business.networkpkg.Network;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author DELL
  */
 public class ManageNetworkJPanel extends javax.swing.JPanel {
-
+  private JPanel userProcessContainer;
+    private EcoSystem system;
     /**
      * Creates new form ManageNetworkJPanel
      */
-    public ManageNetworkJPanel() {
+    public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+
+        populateNetworkTable();
+        populateComboBox();
+    }
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
     }
 
+    private void populateNetworkTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
+        model.setRowCount(0);
+        for (Network network : system.getNetworkList()) {
+            Object[] row = new Object[3];
+            row[0] = network.getCountry();
+            row[1] = network.getState();
+            row[2] = network;
+            
+            model.addRow(row);
+        }
+    }
+    
+    private void populateComboBox()
+    {
+        countryComboBox.removeAllItems();
+        countryComboBox.addItem("Please select a country");
+        countryComboBox.addItem("United States");
+        countryComboBox.addItem("India");
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

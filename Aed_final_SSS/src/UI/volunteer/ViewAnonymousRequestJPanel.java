@@ -3,20 +3,77 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.volunteer;
-
+import business.organizationpkg.OrganizationDirectory;
+import business.organizationpkg.VolunteerOrganization;
+import business.userAccountpkg.UserAccount;
+import business.workQueuepkg.NeedHelpWorkRequest;
+import business.workQueuepkg.SupervisorWorkRequest;
+import business.workQueuepkg.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author DELL
  */
 public class ViewAnonymousRequestJPanel extends javax.swing.JPanel {
-
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private VolunteerOrganization volunteerOrganization;
+    private OrganizationDirectory directory;
     /**
      * Creates new form ViewAnonymousRequestJPanel
      */
-    public ViewAnonymousRequestJPanel() {
+    public ViewAnonymousRequestJPanel(JPanel userProcessContainer, UserAccount account, VolunteerOrganization organization, OrganizationDirectory directory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+       this.volunteerOrganization = organization;
+        this.directory = directory;
+        
+        populateAnonymousHelpRequestTable();
     }
-
+ @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    public void populateAnonymousHelpRequestTable(){
+         
+        DefaultTableModel model = (DefaultTableModel)anonymousHelpReqTable.getModel();
+        model.setRowCount(0);
+        
+        for(WorkRequest request : volunteerOrganization.getWorkQueue().getWorkRequestList()){
+         if(request.getMessage().equalsIgnoreCase("Need Help"))
+         {
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getSender().getPerson().getName();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getPerson().getName();
+            row[3] = request.getStatus();
+            
+            model.addRow(row);
+         }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

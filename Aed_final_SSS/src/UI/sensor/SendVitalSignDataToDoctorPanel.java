@@ -3,18 +3,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.sensor;
+import business.EcoSystem;
+import business.common.Validation;
+import business.organizationpkg.DoctorOrganization;
+import business.personpkg.HelpSeeker;
+import business.userAccountpkg.UserAccount;
+import business.workQueuepkg.SendDataToDoctorWorkRequest;
+import business.workQueuepkg.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author DELL
  */
 public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
-
+    private JPanel userProcessContainer;
+    private UserAccount userAccount; 
+    private HelpSeeker person;
+    private EcoSystem ecoSystem;
+    private DoctorOrganization doctorOrganization;
     /**
      * Creates new form SendVitalSignDataToDoctorPanel
      */
-    public SendVitalSignDataToDoctorPanel() {
+    public SendVitalSignDataToDoctorPanel(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecoSystem) {
         initComponents();
+      this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        person = (HelpSeeker)userAccount.getPerson();
+        this.ecoSystem = ecoSystem;
+         doctorComboBx.removeAllItems();
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
     }
 
     /**
@@ -268,7 +310,33 @@ public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backBtnActionPerformed
 
-
+public void populateDoctorComboBx()
+    {
+       try
+       {
+        doctorComboBx.removeAllItems();
+        doctorOrganization =  Validation.getDoctorOrganization(ecoSystem, userAccount);
+   //    System.out.println("doctorOrganization"+doctorOrganization.getName());
+       if(doctorOrganization!=null)
+       {
+        if(doctorOrganization.getUserAccountDirectory().getUserAccountList().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null, "No doctors exists in our records as of now!","warning", JOptionPane.WARNING_MESSAGE);
+         return;    
+        }
+         doctorComboBx.removeAllItems();
+        for(UserAccount userAccount : doctorOrganization.getUserAccountDirectory().getUserAccountList())
+        {
+        doctorComboBx.addItem(userAccount);
+        }   
+       }
+       }
+       catch(NullPointerException npe)
+       {
+       JOptionPane.showMessageDialog(null, "Dcotor Organization exists in our records as of now!","warning", JOptionPane.WARNING_MESSAGE);
+         return;       
+       }        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JTextArea currentMedicationsTxtArea;

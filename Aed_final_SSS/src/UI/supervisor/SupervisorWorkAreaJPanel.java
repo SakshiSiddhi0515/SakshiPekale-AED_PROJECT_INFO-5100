@@ -3,18 +3,98 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.supervisor;
+import business.EcoSystem;
+import business.organizationpkg.Organization;
+import business.organizationpkg.SupervisorOrganization;
+import business.userAccountpkg.UserAccount;
+import business.workQueuepkg.SupervisorWorkRequest;
+import business.workQueuepkg.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import userInterface.donorpkg.ViewMyProfile;
+import userInterface.volunteer.ViewVolunteerProfile;
 
 /**
  *
  * @author DELL
  */
 public class SupervisorWorkAreaJPanel extends javax.swing.JPanel {
-
+private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+    private UserAccount userAccount;
+    private SupervisorOrganization supervisorOrganization;
     /**
      * Creates new form SupervisorWorkAreaJPanel
      */
-    public SupervisorWorkAreaJPanel() {
+    public SupervisorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization, EcoSystem ecoSystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecoSystem = ecoSystem;
+        this.userAccount = userAccount;
+        this.supervisorOrganization = (SupervisorOrganization)organization;
+        
+        populateWorkRequestTable();
+    }
+  @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth();
+        int h = getHeight();
+        
+        Color c1 = new Color(153,197,85);
+        Color c2 = Color.white;
+     
+        GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
+        setOpaque( false );
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
+        setOpaque( true );
+    }
+    
+    public void populateWorkRequestTable()
+    {
+        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+        model.setRowCount(0);
+        
+        for(WorkRequest request : supervisorOrganization.getWorkQueue().getWorkRequestList()){
+         
+            Object[] row = new Object[5];
+            row[0] = request;
+            row[1] = request.getSender().getPerson().getName();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getPerson().getName();
+            row[3] = request.getStatus();
+            row[4] = request.getSender().getRole().toString();
+            model.addRow(row);
+        }
+    }
+    
+    public void populateWorkRequestToBeProcessedTable()
+    {
+      DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+        model.setRowCount(0);
+        
+        for(WorkRequest request : supervisorOrganization.getWorkQueue().getWorkRequestList()){
+         if(request.getStatus().equalsIgnoreCase("Sent") || request.getStatus().equalsIgnoreCase("Pending") ||
+              request.getStatus().equalsIgnoreCase("Processing")   )
+         {
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getSender().getPerson().getName();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getPerson().getName();
+            row[3] = request.getStatus();
+            
+            model.addRow(row);
+         }
+        }   
     }
 
     /**

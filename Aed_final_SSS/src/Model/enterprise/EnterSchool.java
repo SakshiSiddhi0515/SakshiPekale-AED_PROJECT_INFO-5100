@@ -17,7 +17,7 @@ public class EnterSchool extends enterprises{
         super(name, EnterpriseType.School);
     }
 
-    @Override
+  
     public ArrayList<Role> getSupportedRole() {
         return null;
     }

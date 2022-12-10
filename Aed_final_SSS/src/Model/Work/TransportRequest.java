@@ -35,7 +35,7 @@ public class TransportRequest extends WorkRequest{
 
     @Override
     public String toString() {
-        People_volunteer volunteer = (People_volunteer)this.getSender().getpeople();
+        People_volunteer volunteer = (People_volunteer)this.getSender().getPerson();
         String address = volunteer.getAddress1().concat(volunteer.getAddress2().concat(volunteer.getTown()));
         return address;
                 

@@ -7,7 +7,7 @@ import Model.System.EcoSystem;
 import Model.enterprise.enterprises;
 import Model.Org.Organization;
 import Model.User.UserAccount;
-import userInterface.supervisor.SupervisorWorkAreaJPanel;
+import UI.supervisor.SupervisorWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**

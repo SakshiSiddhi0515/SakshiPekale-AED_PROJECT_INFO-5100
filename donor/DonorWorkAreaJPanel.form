@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+                      <Component id="manageEnt" min="-2" pref="236" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="donationHistory" max="32767" attributes="0"/>
+                          <Component id="viewDonationRequestsBtn" max="32767" attributes="0"/>
+                          <Component id="donateMoneyBtn" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="manageProfile" min="-2" pref="196" max="-2" attributes="0"/>
+                          <Component id="viewProfileBtn" min="-2" pref="196" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="195" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="manageEnt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="viewDonationRequestsBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="manageProfile" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="donationHistory" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="viewProfileBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="donateMoneyBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="251" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="manageProfile">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Profile"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageProfileActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="donationHistory">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Donation History"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="donationHistoryActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="manageEnt">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Malayalam MN" size="24" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Donor Work Area"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewDonationRequestsBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Donation Requests"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewDonationRequestsBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="donateMoneyBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Donate Money"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="donateMoneyBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewProfileBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View/Update Profile"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewProfileBtnActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

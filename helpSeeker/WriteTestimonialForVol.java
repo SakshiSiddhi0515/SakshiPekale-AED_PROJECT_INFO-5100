@@ -54,7 +54,7 @@ public class WriteTestimonialForVol extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -124,11 +124,13 @@ public class WriteTestimonialForVol extends javax.swing.JPanel {
         ViewVolunteerProfileBtn = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 102, 102));
+
         manageEnt.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
         manageEnt.setText("Write Testimonial");
 
         manageEnt1.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
-        manageEnt1.setText("Heart Help ");
+        manageEnt1.setText("Helping Hands ");
 
         helpRequestsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,41 +228,38 @@ public class WriteTestimonialForVol extends javax.swing.JPanel {
         writeTestPanelLayout.setHorizontalGroup(
             writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(writeTestPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewYourProfile)
                     .addGroup(writeTestPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewYourProfile)
-                            .addGroup(writeTestPanelLayout.createSequentialGroup()
-                                .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LastName))
-                                .addGap(18, 18, 18)
-                                .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lastNameField)
-                                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(viewYourProfile1)
-                            .addGroup(writeTestPanelLayout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(submitTestimnialBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cancelBtn))
-                            .addGroup(writeTestPanelLayout.createSequentialGroup()
-                                .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LastName1)
-                                    .addComponent(firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LastName2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(writeTestPanelLayout.createSequentialGroup()
-                                        .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(serviceTypeTxtField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(helpNameTxtField))
-                                        .addGap(183, 183, 183))))))
+                            .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LastName))
+                        .addGap(18, 18, 18)
+                        .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lastNameField)
+                            .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(viewYourProfile1)
                     .addGroup(writeTestPanelLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel1)))
+                        .addGap(112, 112, 112)
+                        .addComponent(submitTestimnialBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelBtn))
+                    .addGroup(writeTestPanelLayout.createSequentialGroup()
+                        .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LastName1)
+                            .addComponent(firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LastName2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(writeTestPanelLayout.createSequentialGroup()
+                                    .addGroup(writeTestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(serviceTypeTxtField, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(helpNameTxtField))
+                                    .addGap(183, 183, 183))))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         writeTestPanelLayout.setVerticalGroup(
@@ -340,9 +339,9 @@ public class WriteTestimonialForVol extends javax.swing.JPanel {
                 .addGap(35, 35, 35))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(377, 377, 377)
-                    .addComponent(manageEnt1)
-                    .addContainerGap(609, Short.MAX_VALUE)))
+                    .addGap(359, 359, 359)
+                    .addComponent(manageEnt1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(577, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +361,7 @@ public class WriteTestimonialForVol extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(writeTestPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(33, 33, 33)

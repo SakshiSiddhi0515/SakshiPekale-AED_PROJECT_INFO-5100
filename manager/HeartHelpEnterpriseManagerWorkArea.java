@@ -80,7 +80,7 @@ public class HeartHelpEnterpriseManagerWorkArea extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -115,13 +115,13 @@ public class HeartHelpEnterpriseManagerWorkArea extends javax.swing.JPanel {
         totSenDevReq1 = new javax.swing.JLabel();
         donatedAmntField = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(151, 197, 46));
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
         valueLabel.setText("<value>");
 
         manageEnt1.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
-        manageEnt1.setText("Heart Help Manager Work Area");
+        manageEnt1.setText("Helping Hands Manager Work Area");
 
         manageEnt2.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
         manageEnt2.setText("Enterprise:");

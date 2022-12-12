@@ -41,6 +41,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -67,8 +72,8 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
-                      <Component id="manageEnt2" min="-2" pref="394" max="-2" attributes="0"/>
-                      <EmptySpace pref="592" max="32767" attributes="0"/>
+                      <Component id="manageEnt2" min="-2" pref="432" max="-2" attributes="0"/>
+                      <EmptySpace pref="554" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -102,7 +107,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="userJButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Manage User"/>
+            <Property name="text" type="java.lang.String" value="Grant access"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userJButtonActionPerformed"/>
@@ -110,7 +115,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="manageEmployeeJButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Manage Employee"/>
+            <Property name="text" type="java.lang.String" value="Create Employee"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageEmployeeJButtonActionPerformed"/>
@@ -118,7 +123,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="manageOrganizationJButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Manage Organization"/>
+            <Property name="text" type="java.lang.String" value="Show Roles"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageOrganizationJButtonActionPerformed"/>
@@ -145,7 +150,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Malayalam MN" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Heart Help Admin Work Area"/>
+            <Property name="text" type="java.lang.String" value="Helping Hands Admin Task Manager"/>
           </Properties>
         </Component>
       </SubComponents>

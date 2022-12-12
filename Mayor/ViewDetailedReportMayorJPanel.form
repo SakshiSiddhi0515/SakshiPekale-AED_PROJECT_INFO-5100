@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="536" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="540" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -41,6 +41,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -49,56 +54,55 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="manageEnt1" min="-2" pref="278" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                          <Component id="manageEnt2" min="-2" pref="366" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
+                                  <Component id="manageEnt2" min="-2" pref="366" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="barchartBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="415" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="backJButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
-                          <Component id="barchartBtn" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
+                              <Component id="manageEnt1" min="-2" pref="278" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="pieChartDetailedReportPanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="manageEnt2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="pieChartDetailedReportPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="manageEnt1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pieChartDetailedReportPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLayeredPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="barchartBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
-                          <Component id="backJButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Component id="barchartBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,7 +111,7 @@
         <Component class="javax.swing.JLabel" name="manageEnt1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Malayalam MN" size="24" style="3"/>
+              <Font name="Arial Rounded MT Bold" size="24" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="View Detailed Report"/>
           </Properties>
@@ -209,9 +213,9 @@
             <Component class="javax.swing.JLabel" name="sendToDoc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total No of Seniors who send data to doctor"/>
+                <Property name="text" type="java.lang.String" value="Total No of people who send data to doctor"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="seniorsWithHeartPrbField">
@@ -225,17 +229,17 @@
             <Component class="javax.swing.JLabel" name="totTransReq1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total No of Seniors who share Vital Info"/>
+                <Property name="text" type="java.lang.String" value="Total No of people who share Vital Info"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="totalSeniorPpl">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total No of Senior People who are in need of Help"/>
+                <Property name="text" type="java.lang.String" value="Total No of  People who are in need of Help"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="senShareInfoField">
@@ -249,17 +253,17 @@
             <Component class="javax.swing.JLabel" name="noheartPrblm">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="No of Senior people with no heart problem "/>
+                <Property name="text" type="java.lang.String" value="No of  people with no heart problem "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="hasHeartPblm">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="No of Senior people with heart problem"/>
+                <Property name="text" type="java.lang.String" value="No of people with heart problem"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="senWithNoHeartProbField">
@@ -281,9 +285,9 @@
             <Component class="javax.swing.JLabel" name="hasNoSensor">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total No of Seniors who dont have sensor device"/>
+                <Property name="text" type="java.lang.String" value="Total No of people who dont have sensor device"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="senWithSensorField">
@@ -297,9 +301,9 @@
             <Component class="javax.swing.JLabel" name="hasSensor">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Malayalam MN" size="18" style="3"/>
+                  <Font name="Arial Rounded MT Bold" size="18" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total No of seniors who has sensor device"/>
+                <Property name="text" type="java.lang.String" value="Total No of people who has sensor device"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="senNoSensorDevField">
@@ -346,9 +350,9 @@
         <Component class="javax.swing.JLabel" name="manageEnt2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Malayalam MN" size="24" style="3"/>
+              <Font name="Arial Rounded MT Bold" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Heart Help Mayor Work Area"/>
+            <Property name="text" type="java.lang.String" value="Helping Hands Lead Work Area"/>
           </Properties>
         </Component>
       </SubComponents>

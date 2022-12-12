@@ -41,18 +41,17 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                          <Component id="getAlertFromHH" min="-2" pref="360" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="helpSeekerName" min="-2" pref="235" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -74,23 +73,30 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
+                          <Component id="helpSeekerName" min="-2" pref="141" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
+                          <Component id="getAlertFromHH" min="-2" pref="407" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="366" max="-2" attributes="0"/>
                           <Component id="backJButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="399" max="32767" attributes="0"/>
+                  <EmptySpace pref="561" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="getAlertFromHH" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="helpSeekerName" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="getAlertFromHH" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="helpSeekerName" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="viewAndUpdateProfileBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="manageVitalSignJBtn" min="-2" max="-2" attributes="0"/>
@@ -100,9 +106,9 @@
                   <Component id="SendVitalDataToDoctorBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="viewVitalSignInfo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="107" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="backJButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace pref="120" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -113,12 +119,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Malayalam MN" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Manage Help Seeker Profile "/>
+            <Property name="text" type="java.lang.String" value="Manage your Profile-Help Seeker"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="manageVitalSignJBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Manage Vital Signs"/>
+            <Property name="text" type="java.lang.String" value="Manage My Help"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageVitalSignJBtnActionPerformed"/>
@@ -126,7 +132,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="viewAndUpdateProfileBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View / Update Profile"/>
+            <Property name="text" type="java.lang.String" value="View or Update Profile"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAndUpdateProfileBtnActionPerformed"/>
@@ -147,7 +153,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="viewVitalSignHistory">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Vital Sign History"/>
+            <Property name="text" type="java.lang.String" value="View My Help"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewVitalSignHistoryActionPerformed"/>
@@ -155,7 +161,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="SendVitalDataToDoctorBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Send Vital Info To Doctor"/>
+            <Property name="text" type="java.lang.String" value="Process Your Help"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SendVitalDataToDoctorBtnActionPerformed"/>

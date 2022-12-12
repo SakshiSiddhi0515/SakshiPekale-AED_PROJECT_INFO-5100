@@ -48,7 +48,7 @@ public class ViewHelpRequestHistory extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -109,7 +109,7 @@ public class ViewHelpRequestHistory extends javax.swing.JPanel {
         manageEnt = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 204, 0));
+        setBackground(new java.awt.Color(255, 102, 102));
 
         workRequestHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

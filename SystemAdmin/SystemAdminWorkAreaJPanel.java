@@ -38,7 +38,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.system = system;
 
         populatenetworkJTree();
-        setBackground(new Color(153,197,85));
+        setBackground(new Color(255,102,102));
       
     }
     
@@ -50,7 +50,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -216,7 +216,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(153, 197, 85));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         networkJTree.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("System");

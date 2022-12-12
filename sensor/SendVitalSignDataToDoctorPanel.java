@@ -51,7 +51,7 @@ public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -83,6 +83,8 @@ public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
         sendDataLabel = new javax.swing.JLabel();
         getAlertFromHH = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 102, 102));
 
         sendToDoctorPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -119,7 +121,16 @@ public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
         currentMedicationsTxtArea.setRows(5);
         jScrollPane1.setViewportView(currentMedicationsTxtArea);
 
-        sendDataLabel.setText("Do you want to send data to Doctor");
+        sendDataLabel.setText("Do you want to send data to Doctor?");
+
+        sendToDoctorPanel.setLayer(medications, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(sendToDoctNoRadio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(sendToDoctorYesRad, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(doctorComboBx, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(dctrNameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(sendDataTodctrBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sendToDoctorPanel.setLayer(sendDataLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout sendToDoctorPanelLayout = new javax.swing.GroupLayout(sendToDoctorPanel);
         sendToDoctorPanel.setLayout(sendToDoctorPanelLayout);
@@ -167,17 +178,9 @@ public class SendVitalSignDataToDoctorPanel extends javax.swing.JPanel {
                 .addComponent(sendDataTodctrBtn)
                 .addContainerGap(66, Short.MAX_VALUE))
         );
-        sendToDoctorPanel.setLayer(medications, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(sendToDoctNoRadio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(sendToDoctorYesRad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(doctorComboBx, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(dctrNameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(sendDataTodctrBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        sendToDoctorPanel.setLayer(sendDataLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getAlertFromHH.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
-        getAlertFromHH.setText("Send Vital Sign Data to Doctor");
+        getAlertFromHH.setText("Send  Prescription to Doctor");
 
         backBtn.setText("<< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {

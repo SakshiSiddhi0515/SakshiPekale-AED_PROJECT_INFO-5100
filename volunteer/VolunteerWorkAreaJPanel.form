@@ -41,58 +41,59 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="389" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="viewAnonymousReqBtn" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="manageVolunteerProfileBtn" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="viewPersonalHelpRequestBtn" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
-                              <Component id="viewTestimonialsBtn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="viewVolProfileBtn" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="547" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
-                          <Component id="manageEnt1" min="-2" pref="296" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
+                          <Component id="manageEnt1" min="-2" pref="266" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Component id="manageEnt" min="-2" pref="281" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="manageEnt" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="manageVolunteerProfileBtn" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="viewPersonalHelpRequestBtn" min="-2" pref="140" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="viewTestimonialsBtn" min="-2" pref="122" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="viewVolProfileBtn" min="-2" pref="112" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="viewAnonymousReqBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="401" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="manageEnt1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                   <Component id="manageEnt" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                  <Component id="manageVolunteerProfileBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="viewPersonalHelpRequestBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="viewAnonymousReqBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="viewTestimonialsBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="viewVolProfileBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="manageVolunteerProfileBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewPersonalHelpRequestBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewTestimonialsBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewVolProfileBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewAnonymousReqBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="178" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,12 +104,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Malayalam MN" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Volunteer Work Area"/>
+            <Property name="text" type="java.lang.String" value="Volunteer Task Manager "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="viewPersonalHelpRequestBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Personal Help Requests"/>
+            <Property name="text" type="java.lang.String" value="Personal Request"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewPersonalHelpRequestBtnActionPerformed"/>
@@ -124,7 +125,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="viewTestimonialsBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Testimonials"/>
+            <Property name="text" type="java.lang.String" value="Feedbacks"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewTestimonialsBtnActionPerformed"/>
@@ -135,12 +136,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Malayalam MN" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Welcome to Heart Help"/>
+            <Property name="text" type="java.lang.String" value="Helping Hands Clubs"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="viewAnonymousReqBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Anonymous Help Requests"/>
+            <Property name="text" type="java.lang.String" value="Arbitary Request"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAnonymousReqBtnActionPerformed"/>

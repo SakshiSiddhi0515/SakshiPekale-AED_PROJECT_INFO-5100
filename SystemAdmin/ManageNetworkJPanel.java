@@ -41,7 +41,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         int w = getWidth();
         int h = getHeight();
         
-        Color c1 = new Color(153,197,85);
+        Color c1 = new Color(255,102,102);
         Color c2 = Color.white;
      
         GradientPaint gp = new GradientPaint(w/4, 0, c2, w/4, h, c1);
@@ -98,7 +98,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         deleteNetwork = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(182, 201, 233));
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -322,12 +322,17 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         if(countryComboBox.getSelectedItem() == "United States")
         {
             statesComboBox.addItem("Massachusetts");
-            statesComboBox.addItem("Tennessee");
+            statesComboBox.addItem("NewYork");
+            statesComboBox.addItem("California");
+        
         }
         else if(countryComboBox.getSelectedItem() == "India")
         {
-            statesComboBox.addItem("Andhra Pradesh");
-            statesComboBox.addItem("Telangana");
+            statesComboBox.addItem("Gujrat");
+            statesComboBox.addItem("Maharashtra");
+    
+        
+            
         }
     }//GEN-LAST:event_countryComboBoxActionPerformed
 
@@ -375,19 +380,24 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             cityComboBox.addItem("Roxbury");
             cityComboBox.addItem("Somerville");
         }
-        else if(statesComboBox.getSelectedItem() == "Tennessee")
+        else if(statesComboBox.getSelectedItem() == "NewYork")
         {
-            cityComboBox.addItem("Memphis");
-            cityComboBox.addItem("GermanTown");
+            cityComboBox.addItem("Brooklyn");
+            cityComboBox.addItem("Manhatten");
         }
-        else if(statesComboBox.getSelectedItem() == "Andhra Pradesh")
+        else if(statesComboBox.getSelectedItem() == "California")
         {
-            cityComboBox.addItem("Vijayawada");
+            cityComboBox.addItem("LosAngeles");
         }
-        else if(statesComboBox.getSelectedItem() == "Telangana")
+        else if(statesComboBox.getSelectedItem() == "Gujrat")
         {
-            cityComboBox.addItem("Nalgonda");
-            cityComboBox.addItem("Karimnagar");
+            cityComboBox.addItem("Surat");
+            cityComboBox.addItem("Ahamadabad");
+        }
+        else if(statesComboBox.getSelectedItem() == "Maharahtra")
+        {
+            cityComboBox.addItem("Nashik");
+            cityComboBox.addItem("Pune");
         }
     }//GEN-LAST:event_statesComboBoxActionPerformed
 

@@ -22,10 +22,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="manageEnt" min="-2" pref="281" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+              <Component id="backJButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="38" pref="274" max="32767" attributes="0"/>
+              <Component id="createProfileButton" min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="418" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="dateOfBirth" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
@@ -37,56 +43,53 @@
                           <Component id="donorName" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
                           <Component id="zipCode" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                           <Component id="phoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="createYourProfile" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
-                          <Component id="backJButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="phoneNumberField" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="donorDobField" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="zipCodeField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="townField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="occupationField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="emailIDField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="addressField" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="donorNameField" min="-2" pref="184" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="createProfileButton" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="supDobField" alignment="0" pref="184" max="32767" attributes="0"/>
+                          <Component id="zipCodeField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="townField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="occupationField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="emailIDField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="supaddressField" alignment="0" pref="184" max="32767" attributes="0"/>
+                          <Component id="supNameField" pref="184" max="32767" attributes="0"/>
+                          <Component id="phoneNumberField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                      <Component id="createYourProfile" min="-2" pref="185" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="manageEnt" min="-2" pref="308" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="356" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="manageEnt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="createYourProfile" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="donorName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="donorNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="supNameField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dateOfBirth" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="donorDobField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="supDobField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="address" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addressField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="supaddressField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -115,10 +118,10 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="phoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="phoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="phoneNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="createProfileButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="backJButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -129,37 +132,18 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="dateOfBirth">
+    <Component class="javax.swing.JTextField" name="zipCodeField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="supNameField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date Of Birth (MM/DD/YYYY):"/>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="address">
+    <Component class="javax.swing.JLabel" name="donorName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Address: "/>
+        <Property name="text" type="java.lang.String" value="Full Name:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="addressField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="town">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Town/City: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="townField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="zipCode">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Zip Code:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="backJButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;&lt; back"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="createYourProfile">
       <Properties>
@@ -169,39 +153,15 @@
         <Property name="text" type="java.lang.String" value="Create Your Profile"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="donorName">
+    <Component class="javax.swing.JFormattedTextField" name="supDobField">
+    </Component>
+    <Component class="javax.swing.JButton" name="backJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Full Name:"/>
+        <Property name="text" type="java.lang.String" value="&lt;&lt; back"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="donorNameField">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="zipCodeField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="occupation">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Occupation:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="occupationField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="emailID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Email Address:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="emailIDField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="phoneNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Phone Number:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="phoneNumberField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backJButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="createProfileButton">
       <Properties>
@@ -211,15 +171,58 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createProfileButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="donorDobField">
+    <Component class="javax.swing.JLabel" name="zipCode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Zip Code:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="townField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="phoneNumber">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Phone Number:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="emailIDField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="town">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Town/City: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="supaddressField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="emailID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Email Address:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="address">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Address: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="occupationField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateOfBirth">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date Of Birth (MM/DD/YYYY):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="occupation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Occupation:"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="manageEnt">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Malayalam MN" size="24" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="help the helping hands"/>
+        <Property name="text" type="java.lang.String" value="Supervisor Task Manager"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="phoneNumberField">
     </Component>
   </SubComponents>
 </Form>

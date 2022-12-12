@@ -8,7 +8,7 @@ import Model.enterprise.enterprises;
 import Model.Org.Organization;
 import Model.User.UserAccount;
 import javax.swing.JPanel;
-import UI.manager.HeartHelpEnterpriseManagerWorkArea;
+import UI.manager.HelpEnterpriseManagerWorkArea;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Role_manager extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, 
             Organization organization, enterprises enterprise, EcoSystem business) {
-        return new HeartHelpEnterpriseManagerWorkArea(userProcessContainer, enterprise,business, account);
+        return new HelpEnterpriseManagerWorkArea(userProcessContainer, enterprise,business, account);
     }
     @Override
     public String toString() {

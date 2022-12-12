@@ -48,7 +48,7 @@ public class ConfigureSystem {
         network.setState("Massachusetts");
         network.setCity("Boston");
     // School    
-        enterprises enterprise = network.getEnterpriseDirectory().addEnterprise("BostonSchool", enterprises.EnterpriseType.School);
+        enterprises enterprise = network.getEnterpriseDirectory().addEnterprise("Travel Agent", enterprises.EnterpriseType.School);
         people = enterprise.getPersonDirectory().addPerson();
         people.setLastName("School Admin");
         people.setName();
@@ -68,9 +68,9 @@ public class ConfigureSystem {
         account.setEnabled(true);
         
       // Heart Help
-         enterprise = network.getEnterpriseDirectory().addEnterprise("BostonHeartHelp", enterprises.EnterpriseType.Help);
+         enterprise = network.getEnterpriseDirectory().addEnterprise("HelpingHandsClub", enterprises.EnterpriseType.Help);
          people = enterprise.getPersonDirectory().addPerson();
-        people.setLastName("Heart Help Admin");
+        people.setLastName("Helping Hands Admin");
         people.setName();
          account = enterprise.getUserAccountDirectory().addUserAccount("bhh", "bhh", people, new Role_Admin());
         account.setEnabled(true);
@@ -101,9 +101,9 @@ public class ConfigureSystem {
         
         
               // Non Profit
-         enterprise = network.getEnterpriseDirectory().addEnterprise("NonProfit", enterprises.EnterpriseType.NonProfit);
+         enterprise = network.getEnterpriseDirectory().addEnterprise("Finance", enterprises.EnterpriseType.NonProfit);
          people = enterprise.getPersonDirectory().addPerson();
-        people.setLastName("non proft Admin");
+        people.setLastName("Finance Admin");
         people.setName();
          account = enterprise.getUserAccountDirectory().addUserAccount("bno", "bno", people, new Role_Admin());
         account.setEnabled(true);
@@ -140,9 +140,9 @@ public class ConfigureSystem {
         account.setEnabled(true);
         
                 // Govt
-         enterprise = network.getEnterpriseDirectory().addEnterprise("Govt", enterprises.EnterpriseType.Government);
+         enterprise = network.getEnterpriseDirectory().addEnterprise("RegionHead", enterprises.EnterpriseType.Government);
          people = enterprise.getPersonDirectory().addPerson();
-        people.setLastName("Govt Admin Admin");
+        people.setLastName("Region Head Admin");
         people.setName();
          account = enterprise.getUserAccountDirectory().addUserAccount("bgt", "bgt", people, new Role_Admin());
         account.setEnabled(true);
@@ -150,7 +150,7 @@ public class ConfigureSystem {
         organization = enterprise.getOrganizationDirectory().addOrganization(Organization.Type.Mayor);
         people = organization.getPersonDirectory().addPerson();    
           
-        people.setFirstName("mayor");
+        people.setFirstName("Lead");
         people.setLastName("Boston");
         people.setName();
         

@@ -32,10 +32,10 @@ public abstract class enterprises extends Organization{
     
     public enum EnterpriseType{
         
-       School("School"),
+       School("Travel Agent"),
        Help("Help"),
-       NonProfit("NonProfit"),
-       Government("Government"),
+       NonProfit("Finance"),
+       Government("region Head"),
        Hospital("Hospital");
     
        
